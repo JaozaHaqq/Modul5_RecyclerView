@@ -1,0 +1,106 @@
+package com.example.modul5_recyclerview
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.ContactsContract.Data
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var recyclerView: RecyclerView
+    val Datamahasiswa = listOf<Inis_Variable>(
+        Inis_Variable(
+            R.drawable. abc,
+            namamhs = "Pyo",
+            Nimmhs = "0001",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. def,
+            namamhs = "Lee",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar5,
+            namamhs = "Ye Jin",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar3,
+            namamhs = "Je Hoon",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar4,
+            namamhs = "Jaoza",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar2,
+            namamhs = "Haqquesda",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar6,
+            namamhs = "Daffa",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar6,
+            namamhs = "MM",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar6,
+            namamhs = "hfd",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        ),
+        Inis_Variable(
+            R.drawable. gambar6,
+            namamhs = "hfd",
+            Nimmhs = "0002",
+            Telpmhs = "084123"
+        )
+    )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        recyclerView = findViewById<RecyclerView>(R.id.Rv_Mahasiswa)
+        recyclerView.setHasFixedSize(true)
+        ShowListMahasiswa()
+        ShowGridMahasiswa()
+        ShowCardMahasiswa()
+    }
+
+    private fun ShowCardMahasiswa() {
+        recyclerView.layoutManager = LinearLayoutManager (this)
+        val adapter = Card_MahasiswaAdapter(this, Datamahasiswa) {}
+        recyclerView.adapter = adapter
+    }
+
+    private fun ShowGridMahasiswa() {
+        val adapter = Grid_MahasiswaAdapter(grid_mhs = Datamahasiswa){
+
+        }
+        val recyclerView = findViewById<RecyclerView>(R.id.Rv_Mahasiswa)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView.adapter = Grid_MahasiswaAdapter(Datamahasiswa){
+
+        }
+    }
+
+    private fun ShowListMahasiswa() {
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter= List_MahasiswaAdapter(this, Datamahasiswa){
+        }
+    }
+}
